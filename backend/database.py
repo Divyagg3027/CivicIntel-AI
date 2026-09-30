@@ -6,8 +6,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 # Load environment variables
 load_dotenv()
 
-DEFAULT_DB_URL = "mysql+pymysql://root:3012276@localhost/civicintel"
-DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_DB_URL)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(
     DATABASE_URL,
