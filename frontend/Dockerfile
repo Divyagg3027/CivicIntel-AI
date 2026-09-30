@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY . /app
 
-CMD ["sh", "-c", "python -m http.server ${PORT} --bind 0.0.0.0"]
+CMD ["sh", "-c", "python -m http.server ${PORT:-8080} --bind 0.0.0.0"]
