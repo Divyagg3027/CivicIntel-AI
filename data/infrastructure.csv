@@ -1,0 +1,66 @@
+# Synthetic demonstration data - for CivicIntel AI methodology testing only. Not official government data.
+location,category,infrastructure_score,availability,capacity
+Nagercoil,Water,38.5,Limited,62% Required
+Nagercoil,Roads,52.0,Moderate,70% Required
+Nagercoil,Electricity,68.0,High,85% Required
+Nagercoil,Healthcare,45.0,Limited,58% Required
+Nagercoil,Sanitation,42.0,Limited,55% Required
+Nagercoil,Waste Management,35.0,Low,48% Required
+Nagercoil,Education,74.0,High,88% Required
+Nagercoil,Public Transport,60.0,Moderate,72% Required
+Coimbatore,Water,65.0,Moderate,78% Required
+Coimbatore,Roads,72.0,High,84% Required
+Coimbatore,Electricity,82.0,High,92% Required
+Coimbatore,Healthcare,85.0,High,90% Required
+Coimbatore,Sanitation,60.0,Moderate,75% Required
+Coimbatore,Waste Management,58.0,Moderate,70% Required
+Coimbatore,Education,88.0,High,94% Required
+Coimbatore,Public Transport,78.0,High,85% Required
+Madurai,Water,48.0,Limited,60% Required
+Madurai,Roads,55.0,Moderate,68% Required
+Madurai,Electricity,70.0,High,82% Required
+Madurai,Healthcare,65.0,Moderate,74% Required
+Madurai,Sanitation,50.0,Moderate,65% Required
+Madurai,Waste Management,45.0,Limited,55% Required
+Madurai,Education,76.0,High,86% Required
+Madurai,Public Transport,68.0,Moderate,75% Required
+Chennai,Water,58.0,Moderate,72% Required
+Chennai,Roads,68.0,Moderate,78% Required
+Chennai,Electricity,88.0,High,95% Required
+Chennai,Healthcare,89.0,High,94% Required
+Chennai,Sanitation,62.0,Moderate,75% Required
+Chennai,Waste Management,54.0,Moderate,68% Required
+Chennai,Education,86.0,High,92% Required
+Chennai,Public Transport,82.0,High,90% Required
+Tirunelveli,Water,44.0,Limited,58% Required
+Tirunelveli,Roads,49.0,Limited,62% Required
+Tirunelveli,Electricity,65.0,Moderate,78% Required
+Tirunelveli,Healthcare,52.0,Moderate,65% Required
+Tirunelveli,Sanitation,46.0,Limited,59% Required
+Tirunelveli,Waste Management,40.0,Limited,52% Required
+Tirunelveli,Education,72.0,High,80% Required
+Tirunelveli,Public Transport,56.0,Moderate,66% Required
+Salem,Water,52.0,Moderate,66% Required
+Salem,Roads,60.0,Moderate,72% Required
+Salem,Electricity,74.0,High,84% Required
+Salem,Healthcare,62.0,Moderate,70% Required
+Salem,Sanitation,55.0,Moderate,68% Required
+Salem,Waste Management,48.0,Limited,60% Required
+Salem,Education,75.0,High,84% Required
+Salem,Public Transport,64.0,Moderate,74% Required
+Trichy,Water,60.0,Moderate,74% Required
+Trichy,Roads,64.0,Moderate,76% Required
+Trichy,Electricity,78.0,High,86% Required
+Trichy,Healthcare,70.0,High,80% Required
+Trichy,Sanitation,58.0,Moderate,70% Required
+Trichy,Waste Management,52.0,Moderate,64% Required
+Trichy,Education,80.0,High,88% Required
+Trichy,Public Transport,70.0,High,80% Required
+Thoothukudi,Water,36.0,Limited,50% Required
+Thoothukudi,Roads,50.0,Moderate,64% Required
+Thoothukudi,Electricity,72.0,High,82% Required
+Thoothukudi,Healthcare,48.0,Limited,60% Required
+Thoothukudi,Sanitation,39.0,Limited,50% Required
+Thoothukudi,Waste Management,37.0,Low,46% Required
+Thoothukudi,Education,70.0,High,80% Required
+Thoothukudi,Public Transport,54.0,Moderate,65% Required

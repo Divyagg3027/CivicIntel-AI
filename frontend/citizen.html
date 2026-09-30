@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Civic Issue — CivicIntel AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <a href="index.html" class="nav-brand">
+            <div class="brand-icon">🏛️</div>
+            <div class="brand-text">
+                <h1>CivicIntel AI</h1>
+                <p>Citizen Reporting Portal</p>
+            </div>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="citizen.html" class="active">Citizen Portal</a></li>
+                <li><a href="dashboard.html">Intelligence Dashboard</a></li>
+                <li><a href="http://127.0.0.1:8000/docs" target="_blank">API Docs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Synthetic Data Disclaimer Banner -->
+    <aside class="disclaimer-banner" role="note" aria-label="Dataset Disclaimer">
+        <span>⚠️ <strong>Demonstration Notice:</strong> Development-gap indicators are analytical outputs generated from citizen requests and demonstration datasets. They are not official government assessments. Demo datasets are synthetic and used strictly to demonstrate the CivicIntel AI methodology.</span>
+    </aside>
+
+    <main class="container">
+        <div class="page-header" style="text-align: center;">
+            <h2 class="page-title">Submit a Civic Issue</h2>
+            <p class="page-subtitle">Speak or type your municipal concern in any language. Our AI engine instantly structures your report for civic analysis.</p>
+        </div>
+
+        <div id="formAlert" class="alert-box" style="display: none; max-width: 760px; margin: 0 auto 1.5rem;"></div>
+
+        <div class="form-card">
+            <form id="citizenRequestForm">
+                <!-- Problem Description -->
+                <div class="form-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                        <label for="requestText" class="form-label" style="margin-bottom: 0;">Describe Your Problem</label>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Supports English, தமிழ், हिन्दी, తెలుగు, മലയാളം, ಕನ್ನಡ</span>
+                    </div>
+
+                    <div class="input-with-action">
+                        <textarea
+                            id="requestText"
+                            class="form-textarea"
+                            placeholder="e.g., There is no drinking water in our village. Around 500 people are affected. / எங்கள் பகுதியில் குடிநீர் இல்லை..."
+                            required
+                        ></textarea>
+                        <button type="button" id="voiceInputBtn" class="btn-mic" title="Click to speak (Voice-to-Text)">
+                            🎙️
+                        </button>
+                    </div>
+
+                    <div id="voiceStatus" style="display: none; font-size: 0.825rem; color: var(--accent); margin-top: 0.35rem; font-weight: 500;"></div>
+                </div>
+
+                <!-- Location Field -->
+                <div class="form-group">
+                    <label for="requestLocation" class="form-label">City, Town or Village Location</label>
+                    <input
+                        type="text"
+                        id="requestLocation"
+                        class="search-input"
+                        placeholder="e.g. Nagercoil, Coimbatore, Madurai..."
+                        required
+                    >
+                    <div class="location-chips">
+                        <span style="font-size: 0.8rem; color: var(--text-muted); align-self: center; margin-right: 4px;">Quick select:</span>
+                        <button type="button" class="chip" data-loc="Nagercoil">Nagercoil</button>
+                        <button type="button" class="chip" data-loc="Coimbatore">Coimbatore</button>
+                        <button type="button" class="chip" data-loc="Madurai">Madurai</button>
+                        <button type="button" class="chip" data-loc="Chennai">Chennai</button>
+                        <button type="button" class="chip" data-loc="Tirunelveli">Tirunelveli</button>
+                        <button type="button" class="chip" data-loc="Salem">Salem</button>
+                        <button type="button" class="chip" data-loc="Trichy">Trichy</button>
+                        <button type="button" class="chip" data-loc="Thoothukudi">Thoothukudi</button>
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn-primary">
+                    Submit Request
+                </button>
+            </form>
+
+            <!-- Real-time AI Intelligence Output Breakdown -->
+            <div id="resultCard" class="result-card">
+                <div class="result-header">
+                    <span style="font-size: 1.5rem;">✅</span>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.15rem; color: var(--primary);">Request Received & Analyzed</h3>
+                        <p style="font-size: 0.825rem; color: var(--text-muted); margin: 0;">Unstructured voice/text converted into structured municipal intelligence</p>
+                    </div>
+                </div>
+
+                <div class="result-grid">
+                    <div class="result-metric">
+                        <div class="result-metric-label">Detected Category</div>
+                        <div id="resCategory" class="result-metric-value">—</div>
+                    </div>
+
+                    <div class="result-metric">
+                        <div class="result-metric-label">Severity Level</div>
+                        <div style="margin-top: 0.35rem;">
+                            <span id="resSeverity" class="badge badge-low">—</span>
+                        </div>
+                    </div>
+
+                    <div class="result-metric">
+                        <div class="result-metric-label">Affected Population</div>
+                        <div id="resPeople" class="result-metric-value">—</div>
+                    </div>
+
+                    <div class="result-metric">
+                        <div class="result-metric-label">Detected Language</div>
+                        <div id="resLanguage" class="result-metric-value">—</div>
+                    </div>
+
+                    <div class="result-metric" style="grid-column: 1 / -1;">
+                        <div class="result-metric-label">Recommended Development Need</div>
+                        <div id="resNeed" class="result-metric-value" style="color: var(--accent); font-size: 1.05rem;">—</div>
+                    </div>
+
+                    <div class="result-metric">
+                        <div class="result-metric-label">Target Location</div>
+                        <div id="resLocation" class="result-metric-value">—</div>
+                    </div>
+
+                    <div class="result-metric">
+                        <div class="result-metric-label">Status</div>
+                        <div id="resStatus" class="result-metric-value" style="color: var(--success);">Analyzed</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; justify-content: flex-end;">
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('citizenRequestForm').reset(); document.getElementById('resultCard').classList.remove('visible');">
+                        Submit Another
+                    </button>
+                    <a href="dashboard.html" class="btn-hero-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                        View on Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <strong style="color: white; font-size: 1rem;">CivicIntel AI</strong>
+                <p style="margin-top: 4px;">Citizen Portal &bull; Turning Citizen Voices into Development Intelligence</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="citizen.html">Citizen Portal</a>
+                <a href="dashboard.html">Intelligence Dashboard</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/citizen.js"></script>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1560 860" width="1560" height="860">
+  <defs>
+    <style>
+      text { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    </style>
+
+    <!-- Arrow marker -->
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,1 L9,5 L0,9 Z" fill="#64748b"/>
+    </marker>
+    <marker id="arrW" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,1 L9,5 L0,9 Z" fill="#94a3b8"/>
+    </marker>
+
+    <!-- Layer gradients -->
+    <linearGradient id="gBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0d1424"/>
+    </linearGradient>
+    <linearGradient id="gHdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+
+    <!-- Card gradient fills per layer -->
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#172b47"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b1f6e"/>
+      <stop offset="100%" stop-color="#2d1857"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c3248"/>
+      <stop offset="100%" stop-color="#0a2638"/>
+    </linearGradient>
+    <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d3d36"/>
+      <stop offset="100%" stop-color="#0a2e2a"/>
+    </linearGradient>
+    <linearGradient id="g5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4c2700"/>
+      <stop offset="100%" stop-color="#3a1e00"/>
+    </linearGradient>
+    <linearGradient id="g6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a1010"/>
+      <stop offset="100%" stop-color="#380c0c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── Background ── -->
+  <rect width="1560" height="860" fill="url(#gBg)"/>
+
+  <!-- ── Header ── -->
+  <rect x="0" y="0" width="1560" height="72" fill="url(#gHdr)"/>
+  <text x="28" y="36" fill="#ffffff" font-size="22" font-weight="700" dominant-baseline="middle">CivicIntel AI</text>
+  <text x="180" y="36" fill="#93c5fd" font-size="14" dominant-baseline="middle">|  System Architecture  —  Current Implementation</text>
+  <text x="28" y="58" fill="#bfdbfe" font-size="11">Python · FastAPI · MySQL · SQLAlchemy · Leaflet.js · Chart.js · Web Speech API (browser)</text>
+  <text x="1380" y="40" fill="#bfdbfe" font-size="11" text-anchor="middle">22 tests passing ✓</text>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SIX LAYER COLUMNS  (x positions: 20, 280, 540, 800, 1060, 1320)
+       Each column: width 240, starts at y=88
+       ═══════════════════════════════════════════════════════════════════ -->
+
+  <!-- ─────────────── COLUMN 1 : CITIZEN INPUT ─────────────── -->
+  <!-- Column background -->
+  <rect x="20" y="88" width="240" height="750" rx="8" fill="#111827" stroke="#1e3a5f" stroke-width="1.5"/>
+  <!-- Column header -->
+  <rect x="20" y="88" width="240" height="38" rx="8" fill="#1d4ed8"/>
+  <rect x="20" y="112" width="240" height="14" fill="#1d4ed8"/>
+  <text x="140" y="111" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">1 · CITIZEN INPUT</text>
+
+  <!-- Card: Web Portal -->
+  <rect x="32" y="140" width="216" height="92" rx="6" fill="url(#g1)" stroke="#3b82f6" stroke-width="1"/>
+  <text x="44" y="160" fill="#93c5fd" font-size="11" font-weight="700">Web Portal</text>
+  <text x="44" y="177" fill="#e2e8f0" font-size="10">citizen.html · index.html</text>
+  <text x="44" y="194" fill="#cbd5e1" font-size="10">· Problem description textarea</text>
+  <text x="44" y="209" fill="#cbd5e1" font-size="10">· Location text input / city chips</text>
+  <text x="44" y="224" fill="#94a3b8" font-size="9">Served via python -m http.server 5500</text>
+
+  <!-- Card: Language support -->
+  <rect x="32" y="244" width="216" height="102" rx="6" fill="url(#g1)" stroke="#2563eb" stroke-width="1"/>
+  <text x="44" y="263" fill="#93c5fd" font-size="11" font-weight="700">Multilingual Text Input</text>
+  <text x="44" y="280" fill="#bfdbfe" font-size="10">English · Tamil (தமிழ்)</text>
+  <text x="44" y="295" fill="#bfdbfe" font-size="10">Hindi (हिन्दी) · Telugu (తెలుగు)</text>
+  <text x="44" y="310" fill="#bfdbfe" font-size="10">Malayalam (മലയാളം)</text>
+  <text x="44" y="325" fill="#bfdbfe" font-size="10">Kannada (ಕನ್ನಡ)</text>
+  <text x="44" y="340" fill="#94a3b8" font-size="9">6 languages detected server-side</text>
+
+  <!-- Card: Voice dictation -->
+  <rect x="32" y="358" width="216" height="88" rx="6" fill="url(#g1)" stroke="#1e40af" stroke-width="1"/>
+  <text x="44" y="377" fill="#93c5fd" font-size="11" font-weight="700">Voice Dictation (Browser)</text>
+  <text x="44" y="394" fill="#cbd5e1" font-size="10">Web Speech API · SpeechRecognition</text>
+  <text x="44" y="409" fill="#cbd5e1" font-size="10">lang="en-IN" · interim results</text>
+  <text x="44" y="424" fill="#94a3b8" font-size="9">Client-side only · Chrome/Edge</text>
+  <text x="44" y="438" fill="#f59e0b" font-size="9">⚠ No server-side audio upload</text>
+
+  <!-- Card: Feedback card -->
+  <rect x="32" y="458" width="216" height="78" rx="6" fill="#0f2d12" stroke="#166534" stroke-width="1"/>
+  <text x="44" y="477" fill="#4ade80" font-size="11" font-weight="700">Instant Result Card</text>
+  <text x="44" y="494" fill="#bbf7d0" font-size="10">Category · Severity badge</text>
+  <text x="44" y="509" fill="#bbf7d0" font-size="10">Affected count · Detected need</text>
+  <text x="44" y="524" fill="#94a3b8" font-size="9">Renders after POST /requests</text>
+
+  <!-- Card: Dashboard frontend -->
+  <rect x="32" y="548" width="216" height="98" rx="6" fill="url(#g1)" stroke="#1e40af" stroke-width="1"/>
+  <text x="44" y="567" fill="#93c5fd" font-size="11" font-weight="700">Dashboard Frontend</text>
+  <text x="44" y="584" fill="#e2e8f0" font-size="10">dashboard.html · dashboard.js</text>
+  <text x="44" y="599" fill="#cbd5e1" font-size="10">· Leaflet GIS map (map.js)</text>
+  <text x="44" y="614" fill="#cbd5e1" font-size="10">· Chart.js charts (charts.js)</text>
+  <text x="44" y="629" fill="#cbd5e1" font-size="10">· Search &amp; filter controls</text>
+  <text x="44" y="642" fill="#94a3b8" font-size="9">api.js — centralised HTTP client</text>
+
+  <!-- ─────────────── ARROW 1 → 2 ─────────────── -->
+  <line x1="262" y1="440" x2="278" y2="440" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="270" y="434" fill="#94a3b8" font-size="9" text-anchor="middle">HTTP</text>
+  <text x="270" y="456" fill="#94a3b8" font-size="9" text-anchor="middle">POST</text>
+
+  <!-- ─────────────── COLUMN 2 : FASTAPI BACKEND ─────────────── -->
+  <rect x="280" y="88" width="240" height="750" rx="8" fill="#111827" stroke="#0c3248" stroke-width="1.5"/>
+  <rect x="280" y="88" width="240" height="38" rx="8" fill="#0369a1"/>
+  <rect x="280" y="112" width="240" height="14" fill="#0369a1"/>
+  <text x="400" y="111" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">2 · FASTAPI BACKEND</text>
+
+  <!-- Card: Core app -->
+  <rect x="292" y="140" width="216" height="80" rx="6" fill="url(#g3)" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="304" y="159" fill="#7dd3fc" font-size="11" font-weight="700">main.py  ·  Uvicorn :8000</text>
+  <text x="304" y="176" fill="#cbd5e1" font-size="10">FastAPI application entrypoint</text>
+  <text x="304" y="191" fill="#cbd5e1" font-size="10">CORS middleware (allow_origins=*)</text>
+  <text x="304" y="206" fill="#94a3b8" font-size="9">Swagger UI at /docs  ·  ReDoc at /redoc</text>
+
+  <!-- Card: requests router -->
+  <rect x="292" y="232" width="216" height="108" rx="6" fill="url(#g3)" stroke="#0369a1" stroke-width="1"/>
+  <text x="304" y="251" fill="#7dd3fc" font-size="11" font-weight="700">routers/requests.py</text>
+  <text x="304" y="269" fill="#e2e8f0" font-size="10">POST  /requests</text>
+  <text x="304" y="284" fill="#e2e8f0" font-size="10">GET   /requests</text>
+  <text x="304" y="299" fill="#e2e8f0" font-size="10">GET   /requests/{id}</text>
+  <text x="304" y="314" fill="#e2e8f0" font-size="10">POST  /requests/{id}/analyze</text>
+  <text x="304" y="332" fill="#94a3b8" font-size="9">Filters: search, category, severity, language, location</text>
+
+  <!-- Card: analytics router -->
+  <rect x="292" y="352" width="216" height="118" rx="6" fill="url(#g3)" stroke="#0369a1" stroke-width="1"/>
+  <text x="304" y="371" fill="#7dd3fc" font-size="11" font-weight="700">routers/analytics.py</text>
+  <text x="304" y="389" fill="#e2e8f0" font-size="10">GET  /analytics/summary</text>
+  <text x="304" y="404" fill="#e2e8f0" font-size="10">GET  /analytics/categories</text>
+  <text x="304" y="419" fill="#e2e8f0" font-size="10">GET  /analytics/languages</text>
+  <text x="304" y="434" fill="#e2e8f0" font-size="10">GET  /analytics/locations</text>
+  <text x="304" y="449" fill="#e2e8f0" font-size="10">GET  /analytics/comparison</text>
+  <text x="304" y="462" fill="#94a3b8" font-size="9">8-sector Need vs Infra vs Investment</text>
+
+  <!-- Card: hotspots router -->
+  <rect x="292" y="482" width="216" height="78" rx="6" fill="url(#g3)" stroke="#0369a1" stroke-width="1"/>
+  <text x="304" y="501" fill="#7dd3fc" font-size="11" font-weight="700">routers/hotspots.py</text>
+  <text x="304" y="519" fill="#e2e8f0" font-size="10">GET  /hotspots</text>
+  <text x="304" y="534" fill="#e2e8f0" font-size="10">GET  /hotspots/{location}</text>
+  <text x="304" y="552" fill="#94a3b8" font-size="9">Triggers aggregation + CNI engine</text>
+
+  <!-- Card: system endpoints -->
+  <rect x="292" y="572" width="216" height="60" rx="6" fill="url(#g3)" stroke="#164e63" stroke-width="1"/>
+  <text x="304" y="591" fill="#7dd3fc" font-size="11" font-weight="700">System Endpoints</text>
+  <text x="304" y="608" fill="#e2e8f0" font-size="10">GET  /   ·   GET  /health</text>
+  <text x="304" y="623" fill="#94a3b8" font-size="9">Service metadata &amp; DB connectivity check</text>
+
+  <!-- Card: Pydantic schemas -->
+  <rect x="292" y="644" width="216" height="70" rx="6" fill="url(#g3)" stroke="#164e63" stroke-width="1"/>
+  <text x="304" y="663" fill="#7dd3fc" font-size="11" font-weight="700">schemas.py  ·  Pydantic V2</text>
+  <text x="304" y="680" fill="#cbd5e1" font-size="10">CitizenRequestCreate · CitizenRequestOut</text>
+  <text x="304" y="695" fill="#cbd5e1" font-size="10">SummaryAnalytics · HotspotResponse</text>
+  <text x="304" y="708" fill="#94a3b8" font-size="9">Strict type validation on every route</text>
+
+  <!-- ─────────────── ARROW 2 → 3 ─────────────── -->
+  <line x1="522" y1="440" x2="538" y2="440" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="530" y="434" fill="#94a3b8" font-size="9" text-anchor="middle">calls</text>
+
+  <!-- ─────────────── COLUMN 3 : NLP SERVICES ─────────────── -->
+  <rect x="540" y="88" width="240" height="750" rx="8" fill="#111827" stroke="#3b1f6e" stroke-width="1.5"/>
+  <rect x="540" y="88" width="240" height="38" rx="8" fill="#7c3aed"/>
+  <rect x="540" y="112" width="240" height="14" fill="#7c3aed"/>
+  <text x="660" y="111" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">3 · NLP SERVICES</text>
+
+  <!-- Card: language service -->
+  <rect x="552" y="140" width="216" height="102" rx="6" fill="url(#g2)" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="564" y="159" fill="#c4b5fd" font-size="11" font-weight="700">language_service.py</text>
+  <text x="564" y="177" fill="#e2e8f0" font-size="10">detect_language(text) → str</text>
+  <text x="564" y="193" fill="#ddd6fe" font-size="10">Unicode code-point scan</text>
+  <text x="564" y="208" fill="#94a3b8" font-size="9">Tamil 0x0B80–0x0BFF</text>
+  <text x="564" y="220" fill="#94a3b8" font-size="9">Hindi 0x0900–0x097F  · Telugu 0x0C00–0x0C7F</text>
+  <text x="564" y="232" fill="#94a3b8" font-size="9">Malayalam 0x0D00–0x0D7F · Kannada 0x0C80–0x0CFF</text>
+
+  <!-- Card: analysis service -->
+  <rect x="552" y="254" width="216" height="192" rx="6" fill="url(#g2)" stroke="#7c3aed" stroke-width="1"/>
+  <text x="564" y="273" fill="#c4b5fd" font-size="11" font-weight="700">analysis_service.py</text>
+  <text x="564" y="291" fill="#e2e8f0" font-size="10" font-weight="600">analyze_request_data(text, location)</text>
+  <text x="564" y="309" fill="#ddd6fe" font-size="10">detect_category(text)</text>
+  <text x="564" y="324" fill="#94a3b8" font-size="9">  Weighted multilingual lexicon</text>
+  <text x="564" y="338" fill="#94a3b8" font-size="9">  10 categories scored per keyword</text>
+  <text x="564" y="353" fill="#ddd6fe" font-size="10">detect_severity(text)</text>
+  <text x="564" y="368" fill="#94a3b8" font-size="9">  High / Medium / Low urgency rules</text>
+  <text x="564" y="383" fill="#ddd6fe" font-size="10">extract_affected_people(text)</text>
+  <text x="564" y="398" fill="#94a3b8" font-size="9">  Regex: "500 people", "மக்கள்"</text>
+  <text x="564" y="413" fill="#94a3b8" font-size="9">  Masks ward/bus/year numbers</text>
+  <text x="564" y="428" fill="#ddd6fe" font-size="10">get_coordinates(location)</text>
+  <text x="564" y="440" fill="#94a3b8" font-size="9">  Demo lat/lng dict for 8 cities</text>
+
+  <!-- Card: hotspot service -->
+  <rect x="552" y="458" width="216" height="138" rx="6" fill="url(#g2)" stroke="#6d28d9" stroke-width="1"/>
+  <text x="564" y="477" fill="#c4b5fd" font-size="11" font-weight="700">hotspot_service.py</text>
+  <text x="564" y="495" fill="#e2e8f0" font-size="10">calculate_hotspots(db) → list</text>
+  <text x="564" y="512" fill="#94a3b8" font-size="9">Aggregates requests by location</text>
+  <text x="564" y="527" fill="#94a3b8" font-size="9">Joins population + infra + investment</text>
+  <text x="564" y="542" fill="#94a3b8" font-size="9">Computes CNI · Upserts hotspot_analysis</text>
+  <text x="564" y="557" fill="#ddd6fe" font-size="10">CNI = I_req + I_pop + I_sev + I_inf − I_inv</text>
+  <text x="564" y="572" fill="#94a3b8" font-size="9">Clamped 0–100  ·  sorted descending</text>
+  <text x="564" y="587" fill="#94a3b8" font-size="9">Tier 1 ≥70 · Tier 2 40–69 · Monitor &lt;40</text>
+
+  <!-- Card: insight service -->
+  <rect x="552" y="608" width="216" height="108" rx="6" fill="url(#g2)" stroke="#5b21b6" stroke-width="1"/>
+  <text x="564" y="627" fill="#c4b5fd" font-size="11" font-weight="700">insight_service.py</text>
+  <text x="564" y="645" fill="#e2e8f0" font-size="10">generate_hotspot_insight(...) → str</text>
+  <text x="564" y="662" fill="#ddd6fe" font-size="10">_generate_deterministic_insight()</text>
+  <text x="564" y="677" fill="#94a3b8" font-size="9">  Rule-based factual narrative</text>
+  <text x="564" y="692" fill="#ddd6fe" font-size="10">_call_external_llm()  (optional)</text>
+  <text x="564" y="707" fill="#94a3b8" font-size="9">  Gemini 1.5 Flash via EXTERNAL_LLM_API_KEY</text>
+
+  <!-- ─────────────── ARROW 3 → 4 ─────────────── -->
+  <line x1="782" y1="440" x2="798" y2="440" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="790" y="434" fill="#94a3b8" font-size="9" text-anchor="middle">read/</text>
+  <text x="790" y="456" fill="#94a3b8" font-size="9" text-anchor="middle">write</text>
+
+  <!-- ─────────────── COLUMN 4 : MYSQL DATABASE ─────────────── -->
+  <rect x="800" y="88" width="240" height="750" rx="8" fill="#111827" stroke="#0d3d36" stroke-width="1.5"/>
+  <rect x="800" y="88" width="240" height="38" rx="8" fill="#0f766e"/>
+  <rect x="800" y="112" width="240" height="14" fill="#0f766e"/>
+  <text x="920" y="111" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">4 · MYSQL DATABASE</text>
+
+  <!-- Card: engine -->
+  <rect x="812" y="140" width="216" height="72" rx="6" fill="url(#g4)" stroke="#14b8a6" stroke-width="1"/>
+  <text x="824" y="159" fill="#5eead4" font-size="11" font-weight="700">database.py  ·  SQLAlchemy 2.0</text>
+  <text x="824" y="176" fill="#cbd5e1" font-size="10">MySQL 8.0+  ·  charset utf8mb4</text>
+  <text x="824" y="191" fill="#cbd5e1" font-size="10">pool_pre_ping=True  ·  pool_recycle=3600</text>
+  <text x="824" y="206" fill="#94a3b8" font-size="9">DB URL via .env  ·  DATABASE_URL</text>
+
+  <!-- Table 1: citizen_requests -->
+  <rect x="812" y="224" width="216" height="148" rx="6" fill="url(#g4)" stroke="#0d9488" stroke-width="1"/>
+  <text x="824" y="243" fill="#5eead4" font-size="11" font-weight="700">citizen_requests</text>
+  <text x="824" y="260" fill="#94a3b8" font-size="9">id · request_text · location</text>
+  <text x="824" y="274" fill="#94a3b8" font-size="9">latitude · longitude</text>
+  <text x="824" y="288" fill="#e2e8f0" font-size="10">language     VARCHAR(50) ◀ indexed</text>
+  <text x="824" y="303" fill="#e2e8f0" font-size="10">category     VARCHAR(100) ◀ indexed</text>
+  <text x="824" y="318" fill="#e2e8f0" font-size="10">severity     VARCHAR(50) ◀ indexed</text>
+  <text x="824" y="333" fill="#e2e8f0" font-size="10">affected_people  INT</text>
+  <text x="824" y="348" fill="#e2e8f0" font-size="10">detected_need  VARCHAR(255)</text>
+  <text x="824" y="363" fill="#e2e8f0" font-size="10">status · created_at ◀ indexed</text>
+
+  <!-- Table 2: population_data -->
+  <rect x="812" y="384" width="216" height="72" rx="6" fill="url(#g4)" stroke="#0d9488" stroke-width="1"/>
+  <text x="824" y="403" fill="#5eead4" font-size="11" font-weight="700">population_data</text>
+  <text x="824" y="420" fill="#e2e8f0" font-size="10">location  VARCHAR(255) UNIQUE</text>
+  <text x="824" y="435" fill="#e2e8f0" font-size="10">population  INT</text>
+  <text x="824" y="450" fill="#94a3b8" font-size="9">Seeded from data/population.csv</text>
+
+  <!-- Table 3: infrastructure_data -->
+  <rect x="812" y="468" width="216" height="84" rx="6" fill="url(#g4)" stroke="#0d9488" stroke-width="1"/>
+  <text x="824" y="487" fill="#5eead4" font-size="11" font-weight="700">infrastructure_data</text>
+  <text x="824" y="504" fill="#e2e8f0" font-size="10">location · category</text>
+  <text x="824" y="519" fill="#e2e8f0" font-size="10">infrastructure_score  FLOAT 0–100</text>
+  <text x="824" y="534" fill="#e2e8f0" font-size="10">availability · capacity</text>
+  <text x="824" y="548" fill="#94a3b8" font-size="9">Seeded from data/infrastructure.csv</text>
+
+  <!-- Table 4: investment_data -->
+  <rect x="812" y="564" width="216" height="84" rx="6" fill="url(#g4)" stroke="#0d9488" stroke-width="1"/>
+  <text x="824" y="583" fill="#5eead4" font-size="11" font-weight="700">investment_data</text>
+  <text x="824" y="600" fill="#e2e8f0" font-size="10">location · category</text>
+  <text x="824" y="615" fill="#e2e8f0" font-size="10">investment_amount  FLOAT (INR)</text>
+  <text x="824" y="630" fill="#e2e8f0" font-size="10">project_count · year</text>
+  <text x="824" y="645" fill="#94a3b8" font-size="9">Seeded from data/investment.csv</text>
+
+  <!-- Table 5: hotspot_analysis -->
+  <rect x="812" y="660" width="216" height="120" rx="6" fill="url(#g4)" stroke="#0d9488" stroke-width="1"/>
+  <text x="824" y="679" fill="#5eead4" font-size="11" font-weight="700">hotspot_analysis  (cache)</text>
+  <text x="824" y="696" fill="#e2e8f0" font-size="10">location UNIQUE</text>
+  <text x="824" y="711" fill="#e2e8f0" font-size="10">civic_need_index  FLOAT 0–100</text>
+  <text x="824" y="726" fill="#e2e8f0" font-size="10">request_count · affected_people</text>
+  <text x="824" y="741" fill="#e2e8f0" font-size="10">severity_score · infrastructure_gap</text>
+  <text x="824" y="756" fill="#e2e8f0" font-size="10">dominant_category · explanation</text>
+  <text x="824" y="772" fill="#94a3b8" font-size="9">Upserted on every /hotspots call</text>
+
+  <!-- ─────────────── ARROW 4 → 5 ─────────────── -->
+  <line x1="1042" y1="440" x2="1058" y2="440" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="1050" y="434" fill="#94a3b8" font-size="9" text-anchor="middle">feeds</text>
+
+  <!-- ─────────────── COLUMN 5 : CIVIC INTELLIGENCE ENGINE ─────────────── -->
+  <rect x="1060" y="88" width="240" height="750" rx="8" fill="#111827" stroke="#4c2700" stroke-width="1.5"/>
+  <rect x="1060" y="88" width="240" height="38" rx="8" fill="#b45309"/>
+  <rect x="1060" y="112" width="240" height="14" fill="#b45309"/>
+  <text x="1180" y="111" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">5 · CIVIC INTELLIGENCE</text>
+
+  <!-- Card: geo aggregation -->
+  <rect x="1072" y="140" width="216" height="108" rx="6" fill="url(#g5)" stroke="#d97706" stroke-width="1"/>
+  <text x="1084" y="159" fill="#fbbf24" font-size="11" font-weight="700">Geographic Aggregation</text>
+  <text x="1084" y="177" fill="#cbd5e1" font-size="10">SQL GROUP BY location</text>
+  <text x="1084" y="192" fill="#94a3b8" font-size="9">· SUM(affected_people)</text>
+  <text x="1084" y="207" fill="#94a3b8" font-size="9">· COUNT(requests)</text>
+  <text x="1084" y="222" fill="#94a3b8" font-size="9">· CASE severity → weighted sum</text>
+  <text x="1084" y="237" fill="#94a3b8" font-size="9">· Dominant category per location</text>
+
+  <!-- Card: CNI formula -->
+  <rect x="1072" y="260" width="216" height="172" rx="6" fill="url(#g5)" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="1084" y="279" fill="#fbbf24" font-size="11" font-weight="700">Civic Need Index (0–100)</text>
+  <text x="1084" y="297" fill="#fde68a" font-size="10.5" font-weight="600">CNI = clamp(I_req + I_pop</text>
+  <text x="1104" y="314" fill="#fde68a" font-size="10.5" font-weight="600">    + I_sev + I_inf − I_inv)</text>
+  <line x1="1084" y1="322" x2="1280" y2="322" stroke="#78350f" stroke-width="1"/>
+  <text x="1084" y="337" fill="#fed7aa" font-size="9">I_req  [0-25]  Request volume / population</text>
+  <text x="1084" y="351" fill="#fed7aa" font-size="9">I_pop  [0-25]  Affected ratio + log factor</text>
+  <text x="1084" y="365" fill="#fed7aa" font-size="9">I_sev  [0-20]  Avg severity weight</text>
+  <text x="1084" y="379" fill="#fed7aa" font-size="9">I_inf  [0-20]  (100 − infra_score) / 100 × 20</text>
+  <text x="1084" y="393" fill="#fed7aa" font-size="9">I_inv  [0-10]  Investment per-capita relief</text>
+  <text x="1084" y="410" fill="#94a3b8" font-size="9">High=1.0 · Medium=0.5 · Low=0.2</text>
+  <text x="1084" y="424" fill="#94a3b8" font-size="9">Round to 1 dp · sorted descending</text>
+
+  <!-- Card: hotspot tiers -->
+  <rect x="1072" y="444" width="216" height="108" rx="6" fill="url(#g5)" stroke="#d97706" stroke-width="1"/>
+  <text x="1084" y="463" fill="#fbbf24" font-size="11" font-weight="700">Hotspot Tier Detection</text>
+  <rect x="1084" y="474" width="8" height="8" rx="2" fill="#dc2626"/>
+  <text x="1098" y="482" fill="#fca5a5" font-size="10">Tier 1 Priority   CNI ≥ 70</text>
+  <text x="1098" y="496" fill="#94a3b8" font-size="9">Immediate intervention needed</text>
+  <rect x="1084" y="504" width="8" height="8" rx="2" fill="#d97706"/>
+  <text x="1098" y="512" fill="#fcd34d" font-size="10">Tier 2 Need     40 ≤ CNI &lt; 70</text>
+  <text x="1098" y="526" fill="#94a3b8" font-size="9">Targeted capital allocation</text>
+  <rect x="1084" y="534" width="8" height="8" rx="2" fill="#059669"/>
+  <text x="1098" y="542" fill="#6ee7b7" font-size="10">Monitoring       CNI &lt; 40</text>
+
+  <!-- Card: comparison analytics -->
+  <rect x="1072" y="564" width="216" height="98" rx="6" fill="url(#g5)" stroke="#92400e" stroke-width="1"/>
+  <text x="1084" y="583" fill="#fbbf24" font-size="11" font-weight="700">Comparative Analytics</text>
+  <text x="1084" y="601" fill="#cbd5e1" font-size="10">/analytics/comparison</text>
+  <text x="1084" y="617" fill="#94a3b8" font-size="9">8 sectors × 3 metrics:</text>
+  <text x="1084" y="631" fill="#fca5a5" font-size="9">  Citizen Need Score (0–100)</text>
+  <text x="1084" y="645" fill="#6ee7b7" font-size="9">  Infra Baseline Score (0–100)</text>
+  <text x="1084" y="659" fill="#93c5fd" font-size="9">  Investment Score (0–100)</text>
+
+  <!-- Card: grounded narratives -->
+  <rect x="1072" y="674" width="216" height="106" rx="6" fill="url(#g5)" stroke="#92400e" stroke-width="1"/>
+  <text x="1084" y="693" fill="#fbbf24" font-size="11" font-weight="700">AI Insight Narratives</text>
+  <text x="1084" y="711" fill="#cbd5e1" font-size="10">Deterministic rule-based generator</text>
+  <text x="1084" y="727" fill="#94a3b8" font-size="9">Severity desc · infra desc · urgency label</text>
+  <text x="1084" y="742" fill="#cbd5e1" font-size="10">Optional: Gemini 1.5 Flash API</text>
+  <text x="1084" y="757" fill="#94a3b8" font-size="9">EXTERNAL_LLM_API_KEY env var</text>
+  <text x="1084" y="772" fill="#94a3b8" font-size="9">Falls back to deterministic on failure</text>
+
+  <!-- ─────────────── ARROW 5 → 6 ─────────────── -->
+  <line x1="1302" y1="440" x2="1318" y2="440" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="1310" y="434" fill="#94a3b8" font-size="9" text-anchor="middle">JSON</text>
+
+  <!-- ─────────────── COLUMN 6 : POLICYMAKER DASHBOARD ─────────────── -->
+  <rect x="1320" y="88" width="222" height="750" rx="8" fill="#111827" stroke="#4a1010" stroke-width="1.5"/>
+  <rect x="1320" y="88" width="222" height="38" rx="8" fill="#b91c1c"/>
+  <rect x="1320" y="112" width="222" height="14" fill="#b91c1c"/>
+  <text x="1431" y="111" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">6 · POLICYMAKER VIEW</text>
+
+  <!-- Card: KPI cards -->
+  <rect x="1332" y="140" width="198" height="98" rx="6" fill="url(#g6)" stroke="#ef4444" stroke-width="1"/>
+  <text x="1344" y="159" fill="#fca5a5" font-size="11" font-weight="700">KPI Summary Cards</text>
+  <text x="1344" y="177" fill="#cbd5e1" font-size="10">Total Citizen Reports</text>
+  <text x="1344" y="192" fill="#cbd5e1" font-size="10">High Severity Reports</text>
+  <text x="1344" y="207" fill="#cbd5e1" font-size="10">Reported Affected Citizens</text>
+  <text x="1344" y="222" fill="#cbd5e1" font-size="10">Active Hotspots (CNI ≥ 60)</text>
+
+  <!-- Card: Leaflet map -->
+  <rect x="1332" y="250" width="198" height="102" rx="6" fill="url(#g6)" stroke="#dc2626" stroke-width="1"/>
+  <text x="1344" y="269" fill="#fca5a5" font-size="11" font-weight="700">Leaflet.js GIS Map</text>
+  <text x="1344" y="287" fill="#cbd5e1" font-size="10">OpenStreetMap tile layer</text>
+  <text x="1344" y="303" fill="#fca5a5" font-size="10">● Red  Tier 1 (CNI ≥ 70)</text>
+  <text x="1344" y="319" fill="#fcd34d" font-size="10">● Amber  Tier 2 (40–69)</text>
+  <text x="1344" y="335" fill="#4ade80" font-size="10">● Green  Monitoring (&lt;40)</text>
+  <text x="1344" y="348" fill="#94a3b8" font-size="9">Radius ∝ CNI  ·  Popup on click</text>
+
+  <!-- Card: Charts -->
+  <rect x="1332" y="364" width="198" height="118" rx="6" fill="url(#g6)" stroke="#dc2626" stroke-width="1"/>
+  <text x="1344" y="383" fill="#fca5a5" font-size="11" font-weight="700">Chart.js Analytics</text>
+  <text x="1344" y="401" fill="#cbd5e1" font-size="10">Category doughnut chart</text>
+  <text x="1344" y="416" fill="#cbd5e1" font-size="10">Severity breakdown pie chart</text>
+  <text x="1344" y="431" fill="#cbd5e1" font-size="10">Language distribution bar chart</text>
+  <text x="1344" y="446" fill="#cbd5e1" font-size="10">Locations horizontal bar chart</text>
+  <text x="1344" y="461" fill="#cbd5e1" font-size="10">Need vs Infra vs Inv grouped bar</text>
+  <text x="1344" y="476" fill="#94a3b8" font-size="9">Hover tooltips on all charts</text>
+
+  <!-- Card: Filter -->
+  <rect x="1332" y="494" width="198" height="98" rx="6" fill="url(#g6)" stroke="#991b1b" stroke-width="1"/>
+  <text x="1344" y="513" fill="#fca5a5" font-size="11" font-weight="700">Search &amp; Filter Panel</text>
+  <text x="1344" y="531" fill="#cbd5e1" font-size="10">Text keyword search</text>
+  <text x="1344" y="546" fill="#cbd5e1" font-size="10">Category dropdown</text>
+  <text x="1344" y="561" fill="#cbd5e1" font-size="10">Severity tier dropdown</text>
+  <text x="1344" y="576" fill="#cbd5e1" font-size="10">Language &amp; location dropdowns</text>
+  <text x="1344" y="588" fill="#94a3b8" font-size="9">Live table re-render on change</text>
+
+  <!-- Card: hotspot table -->
+  <rect x="1332" y="604" width="198" height="88" rx="6" fill="url(#g6)" stroke="#991b1b" stroke-width="1"/>
+  <text x="1344" y="623" fill="#fca5a5" font-size="11" font-weight="700">Hotspots Ranked Table</text>
+  <text x="1344" y="641" fill="#cbd5e1" font-size="10">Location · CNI score · Tier badge</text>
+  <text x="1344" y="656" fill="#cbd5e1" font-size="10">Request count · Affected people</text>
+  <text x="1344" y="671" fill="#cbd5e1" font-size="10">Dominant category · Infra gap</text>
+  <text x="1344" y="686" fill="#94a3b8" font-size="9">Inspect Intelligence button per row</text>
+
+  <!-- Card: dossier modal -->
+  <rect x="1332" y="704" width="198" height="76" rx="6" fill="url(#g6)" stroke="#7f1d1d" stroke-width="1"/>
+  <text x="1344" y="723" fill="#fca5a5" font-size="11" font-weight="700">Dossier Intelligence Modal</text>
+  <text x="1344" y="741" fill="#cbd5e1" font-size="10">Full CNI breakdown · sector chart</text>
+  <text x="1344" y="756" fill="#cbd5e1" font-size="10">AI-grounded narrative explanation</text>
+  <text x="1344" y="771" fill="#94a3b8" font-size="9">Triggered by map pin or table row</text>
+
+  <!-- ═══════════════════════ RETURN ARROW (Dashboard → Backend) ══════════ -->
+  <!-- Curved return path: dashboard fetches API -->
+  <path d="M1431,840 Q920,870 400,840" fill="none" stroke="#334155" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arrW)"/>
+  <text x="920" y="862" fill="#64748b" font-size="10" text-anchor="middle">Dashboard fetches API endpoints (GET /hotspots · /analytics/* · /requests)</text>
+
+  <!-- ═══════════════════════ FOOTER LEGEND ════════════════════════════════ -->
+  <rect x="20" y="800" width="1520" height="38" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="36" y="823" fill="#94a3b8" font-size="11" font-weight="700">VERIFIED STACK:</text>
+  <text x="155" y="823" fill="#e2e8f0" font-size="10.5">Python 3.10+  ·  FastAPI ≥0.110  ·  Uvicorn  ·  Pydantic V2  ·  SQLAlchemy 2.0  ·  PyMySQL  ·  MySQL 8.0+</text>
+  <text x="155" y="833" fill="#e2e8f0" font-size="10.5">Leaflet.js 1.9.4  ·  OpenStreetMap  ·  Chart.js 4.4  ·  Web Speech API (browser)  ·  python-dotenv  ·  HTTPX  ·  Pytest</text>
+  <text x="1390" y="826" fill="#4ade80" font-size="11" font-weight="600" text-anchor="middle">22 / 22 tests ✓</text>
+</svg>

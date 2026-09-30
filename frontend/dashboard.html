@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Intelligence Dashboard — CivicIntel AI</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- CivicIntel Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <a href="index.html" class="nav-brand">
+            <div class="brand-icon">🏛️</div>
+            <div class="brand-text">
+                <h1>CivicIntel AI</h1>
+                <p>Municipal Intelligence Dashboard</p>
+            </div>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="citizen.html">Citizen Portal</a></li>
+                <li><a href="dashboard.html" class="active">Intelligence Dashboard</a></li>
+                <li><a href="http://127.0.0.1:8000/docs" target="_blank">API Docs</a></li>
+                <li><button id="refreshBtn" class="btn-secondary" style="background: rgba(255,255,255,0.15); color: white; border: none; padding: 6px 12px;">🔄 Refresh Data</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Synthetic Data Disclaimer Banner -->
+    <aside class="disclaimer-banner" role="note" aria-label="Dataset Disclaimer">
+        <span>⚠️ <strong>Demonstration Notice:</strong> Development-gap indicators are analytical outputs generated from citizen requests and demonstration datasets. They are not official government assessments. Demo datasets are synthetic and used strictly to demonstrate the CivicIntel AI methodology.</span>
+    </aside>
+
+    <div id="errorBanner" class="alert-box alert-error" style="display: none; margin: 1rem 2rem 0;"></div>
+
+    <main class="container">
+        <!-- Page Header -->
+        <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: gap;">
+            <div>
+                <h2 class="page-title">Development Intelligence Overview</h2>
+                <p class="page-subtitle">Synthesizing citizen grievances with demographic, infrastructure, and capital investment baselines</p>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+                Live Analytics Powered by <strong>CivicIntel AI Core</strong>
+            </div>
+        </div>
+
+        <!-- KPI Summary Cards -->
+        <section class="kpi-grid" aria-label="Key Performance Indicators">
+            <div class="kpi-card">
+                <div>
+                    <div class="kpi-label">Total Citizen Reports</div>
+                    <div id="kpiTotalRequests" class="kpi-value">0</div>
+                    <div class="kpi-subtext">Verified & AI-categorized</div>
+                </div>
+                <div class="kpi-icon icon-blue">📋</div>
+            </div>
+
+            <div class="kpi-card">
+                <div>
+                    <div class="kpi-label">High Severity Reports</div>
+                    <div id="kpiHighSeverity" class="kpi-value">0</div>
+                    <div class="kpi-subtext">Urgent municipal hazards</div>
+                </div>
+                <div class="kpi-icon icon-red">🚨</div>
+            </div>
+
+            <div class="kpi-card">
+                <div>
+                    <div class="kpi-label">Reported Affected Citizens</div>
+                    <div id="kpiAffectedPeople" class="kpi-value">0</div>
+                    <div class="kpi-subtext">Estimated aggregate impact</div>
+                </div>
+                <div class="kpi-icon icon-amber">👥</div>
+            </div>
+
+            <div class="kpi-card">
+                <div>
+                    <div class="kpi-label">Active Hotspots</div>
+                    <div id="kpiHotspots" class="kpi-value">0</div>
+                    <div class="kpi-subtext">Priority focus zones</div>
+                </div>
+                <div class="kpi-icon icon-green">📍</div>
+            </div>
+        </section>
+
+        <!-- GIS Hotspots Map Section -->
+        <section class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Geospatial Hotspots Map</h3>
+                    <p class="card-subtitle">Visualizing clusters by Civic Need Index (Red: Tier 1 High Hotspot, Orange: Tier 2 Need, Green: Monitoring)</p>
+                </div>
+                <span class="badge badge-neutral">OpenStreetMap & Leaflet.js</span>
+            </div>
+            <div id="map"></div>
+        </section>
+
+        <!-- Hotspot Intelligence Rankings -->
+        <section class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Development Hotspot Rankings</h3>
+                    <p class="card-subtitle">Locations where citizen reported distress is comparatively acute relative to infrastructure baselines</p>
+                </div>
+                <span class="badge badge-cni-tier1">Civic Need Index (0–100)</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Location</th>
+                            <th>Civic Need Index</th>
+                            <th>Requests</th>
+                            <th>Affected People</th>
+                            <th>Main Need</th>
+                            <th>Infrastructure Gap</th>
+                            <th>Intelligence Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hotspotsTableBody">
+                        <tr>
+                            <td colspan="8" style="text-align: center; padding: 20px;">Loading hotspot intelligence...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Analytics Charts Grid -->
+        <section class="charts-grid" aria-label="Analytics Charts">
+            <!-- Category Distribution -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-header">
+                    <h3 class="card-title">Requests by Category</h3>
+                    <span class="card-subtitle">Distribution</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="categoryChartCanvas"></canvas>
+                </div>
+            </div>
+
+            <!-- Severity Distribution -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-header">
+                    <h3 class="card-title">Requests by Severity</h3>
+                    <span class="card-subtitle">Urgency Tiers</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="severityChartCanvas"></canvas>
+                </div>
+            </div>
+
+            <!-- Language Breakdown -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-header">
+                    <h3 class="card-title">Multilingual Intake</h3>
+                    <span class="card-subtitle">Detected Script Languages</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="languageChartCanvas"></canvas>
+                </div>
+            </div>
+
+            <!-- Location Distribution -->
+            <div class="card" style="margin-bottom: 0;">
+                <div class="card-header">
+                    <h3 class="card-title">Requests by Location</h3>
+                    <span class="card-subtitle">Urban Concentration</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="locationChartCanvas"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparative Infrastructure Intelligence Section (Section 41) -->
+        <section class="card" style="margin-top: 2rem;">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Infrastructure Gap vs Public Investment Analysis</h3>
+                    <p class="card-subtitle">Comparing Normalized Citizen Need vs Baseline Infrastructure Coverage vs Synthetic Investment Allocations</p>
+                </div>
+                <span class="badge badge-neutral">Cross-Domain Intelligence</span>
+            </div>
+            <div class="chart-container" style="height: 340px;">
+                <canvas id="comparisonChartCanvas"></canvas>
+            </div>
+            <p style="font-size: 0.775rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+                * Demonstration analytical output comparing reported civic distress with synthetic municipal baselines. Not official government metrics.
+            </p>
+        </section>
+
+        <!-- Citizen Requests Data Table with Dynamic Filters -->
+        <section class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Citizen Request Intelligence Feed</h3>
+                    <p class="card-subtitle">Raw community requests transformed into structured municipal telemetry</p>
+                </div>
+                <a href="citizen.html" class="btn-secondary" style="font-size: 0.8rem;">+ Submit New</a>
+            </div>
+
+            <!-- Multi-Filter Bar -->
+            <div class="filters-bar">
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="search-input"
+                        placeholder="Search by keywords (e.g. water, potholes, hospital)..."
+                    >
+                </div>
+
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="Water">Water</option>
+                    <option value="Roads">Roads</option>
+                    <option value="Electricity">Electricity</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Education">Education</option>
+                    <option value="Sanitation">Sanitation</option>
+                    <option value="Waste Management">Waste Management</option>
+                    <option value="Public Transport">Public Transport</option>
+                    <option value="Housing">Housing</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <select id="severityFilter" class="filter-select">
+                    <option value="all">All Severities</option>
+                    <option value="High">High Severity</option>
+                    <option value="Medium">Medium Severity</option>
+                    <option value="Low">Low Severity</option>
+                </select>
+
+                <select id="languageFilter" class="filter-select">
+                    <option value="all">All Languages</option>
+                    <option value="English">English</option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Telugu">Telugu</option>
+                    <option value="Malayalam">Malayalam</option>
+                    <option value="Kannada">Kannada</option>
+                </select>
+
+                <select id="locationFilter" class="filter-select">
+                    <option value="all">All Locations</option>
+                </select>
+
+                <button id="resetFiltersBtn" class="btn-secondary">Reset Filters</button>
+            </div>
+
+            <!-- Table -->
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Location</th>
+                            <th>Request Text</th>
+                            <th>Category</th>
+                            <th>Severity</th>
+                            <th>Affected</th>
+                            <th>Language</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requestsTableBody">
+                        <tr>
+                            <td colspan="8" style="text-align: center; padding: 20px;">Loading requests...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Hotspot Detail Modal (Section 40) -->
+    <div id="hotspotModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h3 id="modalHotspotLocation" class="modal-title">Location Intelligence</h3>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">Deep-dive analytical intelligence dossier</p>
+                </div>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="result-grid" style="margin-bottom: 1.5rem;">
+                    <div class="result-metric">
+                        <div class="result-metric-label">Civic Need Index</div>
+                        <div id="modalHotspotCNI" class="result-metric-value" style="color: var(--danger);">—</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-metric-label">Request Count</div>
+                        <div id="modalHotspotRequests" class="result-metric-value">—</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-metric-label">Reported Population</div>
+                        <div id="modalHotspotPopulation" class="result-metric-value">—</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-metric-label">Dominant Need</div>
+                        <div id="modalHotspotCategory" class="result-metric-value">—</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-metric-label">Severity Score</div>
+                        <div id="modalHotspotSeverity" class="result-metric-value">—</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-metric-label">Infrastructure Gap</div>
+                        <div id="modalHotspotInfraGap" class="result-metric-value">—</div>
+                    </div>
+                    <div class="result-metric" style="grid-column: 1 / -1;">
+                        <div class="result-metric-label">Demo Capital Investment</div>
+                        <div id="modalHotspotInvestment" class="result-metric-value" style="color: var(--accent);">—</div>
+                    </div>
+                </div>
+
+                <!-- AI-Generated Grounded Intelligence Narrative -->
+                <div style="background: var(--bg-surface-alt); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); margin-bottom: 1.5rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <span style="font-size: 1.2rem;">🤖</span>
+                        <strong style="color: var(--primary); font-size: 0.95rem;">Civic Intelligence Synthesis</strong>
+                    </div>
+                    <p id="modalHotspotExplanation" style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                        Loading AI narrative...
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 0.9rem; color: var(--primary); margin-bottom: 0.5rem;">Local Request Category Breakdown</h4>
+                    <div style="height: 180px; position: relative;">
+                        <canvas id="modalCategoryChartCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Detail Modal -->
+    <div id="requestModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 580px;">
+            <div class="modal-header">
+                <div>
+                    <h3 id="modalReqId" class="modal-title">Citizen Request Details</h3>
+                    <p id="modalReqLocation" style="font-size: 0.85rem; color: var(--text-muted); margin: 0;"></p>
+                </div>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 1.25rem;">
+                    <strong style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 0.3rem;">Citizen Request Text</strong>
+                    <div id="modalReqText" style="background: var(--bg-surface-alt); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.95rem; border: 1px solid var(--border-subtle); line-height: 1.5;"></div>
+                </div>
+
+                <div class="result-grid">
+                    <div class="result-metric">
+                        <div class="result-metric-label">Category</div>
+                        <div id="modalReqCategory" class="result-metric-value">—</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-metric-label">Severity</div>
+                        <div style="margin-top: 0.25rem;"><span id="modalReqSeverity" class="badge badge-low">—</span></div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-metric-label">Affected People</div>
+                        <div id="modalReqPeople" class="result-metric-value">—</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-metric-label">Language</div>
+                        <div id="modalReqLanguage" class="result-metric-value">—</div>
+                    </div>
+                    <div class="result-metric" style="grid-column: 1 / -1;">
+                        <div class="result-metric-label">Development Need</div>
+                        <div id="modalReqNeed" class="result-metric-value" style="color: var(--accent); font-size: 1rem;">—</div>
+                    </div>
+                    <div class="result-metric">
+                        <div class="result-metric-label">Status</div>
+                        <div id="modalReqStatus" class="result-metric-value" style="color: var(--success);">Analyzed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <strong style="color: white; font-size: 1rem;">CivicIntel AI</strong>
+                <p style="margin-top: 4px;">Turning Citizen Voices into Development Intelligence</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="citizen.html">Citizen Portal</a>
+                <a href="dashboard.html">Intelligence Dashboard</a>
+                <a href="http://127.0.0.1:8000/docs" target="_blank">Swagger API</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 1.5rem; font-size: 0.775rem; color: #64748b;">
+            CivicIntel AI Prototype &bull; Synthetic Demo Datasets &bull; Non-Official Analytical Intelligence
+        </div>
+    </footer>
+
+    <!-- Chart.js & Leaflet JS Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Application Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
